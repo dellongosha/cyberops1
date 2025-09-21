@@ -12,8 +12,9 @@ const BRAND = {
     'CyberOPS provides IT Consulting, Cybersecurity, Cloud Solutions, and Remote/On-Site Tech Support for businesses and individuals.',
 }
 
-const MENU = [
 
+type MenuItem = { label: string; href: string }
+const MENU: MenuItem[] = [
   { label: '+263-771-254-430', href:'tel:+263771254430' },
   { label: 'search', href: '#search' },
   { label: 'Cart', href: '#cart' },
@@ -22,6 +23,7 @@ const MENU = [
   { label: 'Services', href: '#services' },
   { label: 'Shop', href: '#shop' },
 ]
+
 
 const CATEGORY_ITEMS = [
   { icon: 'ht-computer-support-outline', text: 'Computers & Printers' },
