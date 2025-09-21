@@ -13,21 +13,6 @@ const BRAND = {
 }
 
 
-type MenuItem = {
-  label: string
-  href: string
-}
-
-const MENU: MenuItem[] = [
-  { label: '+263-771-254-430', href: 'tel:+263771254430' },
-  { label: 'search', href: '#search' },
-  { label: 'Cart', href: '#cart' },
-  { label: 'Login', href: '#login' },
-  { label: 'Home', href: '#top' },
-  { label: 'Services', href: '#services' },
-  { label: 'Shop', href: '#shop' },
-]
-
 
 
 const CATEGORY_ITEMS = [
@@ -88,13 +73,7 @@ export default function Home() {
                 </span>
               </div> {/* <-- Close the inner flex div here */}
         
-                <nav className="flex items-center gap-8 text-sm">
-                  {MENU.slice(4).map((m) => (
-                    <a key={m.label} href={m.href} className="hover:text-[#0992E9] text-lg">
-                      {m.label}
-                    </a>
-                  ))}
-                </nav>
+
 
             </div> {/* <-- Close the flex items-center gap-80 div here */}
 
@@ -103,27 +82,7 @@ export default function Home() {
             
 
             {/* Center: First 3 Menu Items */}
-            <nav className="flex items-center gap-5 text-lg">
-              {MENU.slice(0, 4).map((m) => (
-                <a
-                  key={m.label}
-                  href={m.href}
-                  className="flex items-center hover:text-[#0992E9]"
-                >
-                  {m.label === "search" ? (
-                    <img src="/icons/search.svg" alt="Search" className="w-7 h-7" />
-                  ) : m.label === "Cart" ? (
-                    <img src="/icons/cart.svg" alt="Cart" className="w-7 h-7" />
-                  ) : m.label === "Login" ? (
-                    <img src="/icons/login.svg" alt="Login" className="w-7 h-7" />
-                  ) : (
-                    m.label
-                  )}
-                </a>
-              ))}
 
-
-            </nav>
 
 
 
