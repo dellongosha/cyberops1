@@ -88,14 +88,14 @@ export default function Home() {
                 </span>
               </div> {/* <-- Close the inner flex div here */}
         
-              <nav className="flex items-center gap-8 text-sm">
-                {MENU.slice(4).map((m) => (
-                  <a key={m!.label} href={m!.href} className="hover:text-[#0992E9] text-lg">
-                    {m!.label}
-                  </a>
-                ))}
+                <nav className="flex items-center gap-8 text-sm">
+                  {MENU.slice(4).map((m) => (
+                    <a key={m.label} href={m.href} className="hover:text-[#0992E9] text-lg">
+                      {m.label}
+                    </a>
+                  ))}
+                </nav>
 
-              </nav>
             </div> {/* <-- Close the flex items-center gap-80 div here */}
 
 
