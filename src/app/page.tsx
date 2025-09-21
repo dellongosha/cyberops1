@@ -1,7 +1,7 @@
 "use client"; 
 
 import Head from 'next/head'
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
 // --- Config ---
@@ -19,7 +19,7 @@ const MENU = [
   { label: 'Cart', href: '#cart' },
   { label: 'Login', href: '#login' },
   { label: 'Home', href: '#top' },
-  { label: 'Services', href: '#services' },,
+  { label: 'Services', href: '#services' },
   { label: 'Shop', href: '#shop' },
 ]
 
@@ -43,39 +43,7 @@ const ROTATING_DEVICES = [
   'Mobile',
 ]
 
-// Example reviews (mirrors the structure you pasted, but branded for CyberOPS)
-const REVIEWS = [
-  {
-    id: 10001,
-    stars: 5,
-    comment:
-      'CyberOPS secured our Azure tenant and tightened network policies. Smooth, professional experience.',
-    author: 'Tendai M.',
-    timestamp: '2025-08-28T13:30:26.000Z',
-    city: 'Harare',
-    address: 'Harare, ZW',
-  },
-  {
-    id: 10002,
-    stars: 5,
-    comment:
-      'They migrated our mail to Microsoft 365 with zero downtime. Highly recommend.',
-    author: 'Rumbi C.',
-    timestamp: '2025-08-27T21:44:16.000Z',
-    city: 'Bulawayo',
-    address: 'Bulawayo, ZW',
-  },
-  {
-    id: 10003,
-    stars: 4,
-    comment:
-      'Great WiFi redesign and firewall hardening. Came on time and explained everything clearly.',
-    author: 'Alex K.',
-    timestamp: '2025-08-27T11:52:53.000Z',
-    city: 'Mutare',
-    address: 'Mutare, ZW',
-  },
-]
+
 
 export default function Home() {
   const [index, setIndex] = useState(0)
@@ -87,10 +55,7 @@ export default function Home() {
     return () => clearInterval(t)
   }, [])
 
-  const stars = useMemo(() => {
-    const all = REVIEWS.flatMap((r) => Array(r.stars).fill('★'))
-    return { avg: 4.8, total: REVIEWS.length, stars: all }
-  }, [])
+
 
   return (
     <div id="top" className="min-h-screen bg-gray-50 text-gray-900">
@@ -111,13 +76,13 @@ export default function Home() {
             <div className="flex items-center gap-80">
               <div className="flex items-center gap-2">
                 <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-blue-600 to-indigo-600" />
-                <span className="text-xl font-extrabold tracking-tight text-#0992E9"   style={{ fontFamily: 'InterTight, sans-serif' }}>
+                <span className="text-xl font-extrabold tracking-tight text-[#0992E9]"   style={{ fontFamily: 'InterTight, sans-serif' }}>
                   {BRAND.name}
                 </span>
               </div>
               <nav className="flex items-center gap-8 text-sm">
-                {MENU.slice(4).map((m) => (
-                  <a key={m.label} href={m.href} className="hover:text-#0992E9 text-lg">
+                {MENU.slice(4).filter(Boolean).map((m) => (
+                  <a key={m.label} href={m.href} className="hover:text-[#0992E9] text-lg">
                     {m.label}
                   </a>
                 ))}
@@ -133,7 +98,7 @@ export default function Home() {
                 <a
                   key={m.label}
                   href={m.href}
-                  className="flex items-center hover:text-#0992E9"
+                  className="flex items-center hover:text-[#0992E9]"
                 >
                   {m.label === "search" ? (
                     <img src="/icons/search.svg" alt="Search" className="w-7 h-7" />
