@@ -12,9 +12,14 @@ const BRAND = {
     'CyberOPS provides IT Consulting, Cybersecurity, Cloud Solutions, and Remote/On-Site Tech Support for businesses and individuals.',
 }
 
-const MENU = [
 
-  { label: '+263-771-254-430', href:'tel:+263771254430' },
+type MenuItem = {
+  label: string
+  href: string
+}
+
+const MENU: MenuItem[] = [
+  { label: '+263-771-254-430', href: 'tel:+263771254430' },
   { label: 'search', href: '#search' },
   { label: 'Cart', href: '#cart' },
   { label: 'Login', href: '#login' },
@@ -22,6 +27,8 @@ const MENU = [
   { label: 'Services', href: '#services' },
   { label: 'Shop', href: '#shop' },
 ]
+
+
 
 const CATEGORY_ITEMS = [
   { icon: 'ht-computer-support-outline', text: 'Computers & Printers' },
@@ -76,21 +83,24 @@ export default function Home() {
             <div className="flex items-center gap-80">
               <div className="flex items-center gap-2">
                 <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-blue-600 to-indigo-600" />
-                <span className="text-xl font-extrabold tracking-tight text-[#0992E9]"   style={{ fontFamily: 'InterTight, sans-serif' }}>
+                <span className="text-xl font-extrabold tracking-tight text-[#0992E9]" style={{ fontFamily: 'InterTight, sans-serif' }}>
                   {BRAND.name}
                 </span>
-              </div>
-              <nav className="flex items-center gap-8 text-sm">
-                {MENU.slice(4).filter(Boolean).map((m) => (
-                  <a key={m.label} href={m.href} className="hover:text-[#0992E9] text-lg">
-                    {m.label}
-                  </a>
-                ))}
-              </nav>
-            </div>
+              </div> {/* <-- Close the inner flex div here */}
+        
+                <nav className="flex items-center gap-8 text-sm">
+                  {MENU.slice(4).map((m) => (
+                    <a key={m.label} href={m.href} className="hover:text-[#0992E9] text-lg">
+                      {m.label}
+                    </a>
+                  ))}
+                </nav>
 
-            {/* Center: First 3 Menu Items */}
+            </div> {/* <-- Close the flex items-center gap-80 div here */}
 
+
+
+            
 
             {/* Center: First 3 Menu Items */}
             <nav className="flex items-center gap-5 text-lg">
