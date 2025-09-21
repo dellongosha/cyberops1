@@ -83,27 +83,20 @@ export default function Home() {
             <div className="flex items-center gap-80">
               <div className="flex items-center gap-2">
                 <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-blue-600 to-indigo-600" />
-                <span className="text-xl font-extrabold tracking-tight text-[#0992E9]"   style={{ fontFamily: 'InterTight, sans-serif' }}>
+                <span className="text-xl font-extrabold tracking-tight text-[#0992E9]" style={{ fontFamily: 'InterTight, sans-serif' }}>
                   {BRAND.name}
                 </span>
-              </div>
-
-                <nav className="flex items-center gap-8 text-sm">
-                  {MENU.slice(4).map((m) => (
-                    <a key={m.label} href={m.href} className="hover:text-[#0992E9] text-lg">
-                      {m.label}
-                    </a>
-                  ))}
-                </nav>
-
-
-
-                
-                
+              </div> {/* <-- Close the inner flex div here */}
+        
+              <nav className="flex items-center gap-8 text-sm">
+                {MENU.slice(4).filter(Boolean).map((m) => (
+                  <a key={m!.label} href={m!.href} className="hover:text-[#0992E9] text-lg">
+                    {m!.label}
+                  </a>
+                ))}
               </nav>
-            </div>
+            </div> {/* <-- Close the flex items-center gap-80 div here */}
 
-            {/* Center: First 3 Menu Items */}
 
 
             {/* Center: First 3 Menu Items */}
