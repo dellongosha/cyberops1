@@ -13,9 +13,13 @@ const BRAND = {
 }
 
 
-type MenuItem = { label: string; href: string }
+type MenuItem = {
+  label: string
+  href: string
+}
+
 const MENU: MenuItem[] = [
-  { label: '+263-771-254-430', href:'tel:+263771254430' },
+  { label: '+263-771-254-430', href: 'tel:+263771254430' },
   { label: 'search', href: '#search' },
   { label: 'Cart', href: '#cart' },
   { label: 'Login', href: '#login' },
@@ -23,6 +27,7 @@ const MENU: MenuItem[] = [
   { label: 'Services', href: '#services' },
   { label: 'Shop', href: '#shop' },
 ]
+
 
 
 const CATEGORY_ITEMS = [
@@ -84,14 +89,13 @@ export default function Home() {
               </div>
 
                 <nav className="flex items-center gap-8 text-sm">
-                  {MENU.slice(4).map((m) => 
-                    m && ( // check that m is not undefined
-                      <a key={m.label} href={m.href} className="hover:text-[#0992E9] text-lg">
-                        {m.label}
-                      </a>
-                    )
-                  )}
+                  {MENU.slice(4).map((m) => (
+                    <a key={m.label} href={m.href} className="hover:text-[#0992E9] text-lg">
+                      {m.label}
+                    </a>
+                  ))}
                 </nav>
+
 
 
                 
