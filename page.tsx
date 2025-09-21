@@ -81,11 +81,16 @@ export default function Home() {
                 </span>
               </div>
               <nav className="flex items-center gap-8 text-sm">
+
+
                 {MENU.slice(4).filter(Boolean).map((m) => (
-                  <a key={m.label} href={m.href} className="hover:text-[#0992E9] text-lg">
-                    {m.label}
+                  <a key={m!.label} href={m!.href} className="hover:text-[#0992E9] text-lg">
+                    {m!.label}
                   </a>
                 ))}
+
+
+                
               </nav>
             </div>
 
