@@ -1,68 +1,65 @@
-"use client"; 
+"use client";
 
-import Head from 'next/head'
-import { useEffect, useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import Head from "next/head";
+import { useEffect, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+
 
 // --- Config ---
 const BRAND = {
-  name: 'CyberOPS',
-  tagline: 'Secure. Reliable. Professional.',
+  name: "Established Solutions",
+  tagline: "Secure. Reliable. Professional.",
   description:
-    'CyberOPS provides IT Consulting, Cybersecurity, Cloud Solutions, and Remote/On-Site Tech Support for businesses and individuals.',
-}
-
+    "Established Solutions provides IT Consulting, Cybersecurity, Cloud Solutions, and Remote/On-Site Tech Support for businesses and individuals.",
+};
 
 type MenuItem = {
-  label: string
-  href: string
-}
+  label: string;
+  href: string;
+};
 
 const MENU: MenuItem[] = [
-  { label: '+263-771-254-430', href: 'tel:+263771254430' },
-  { label: 'search', href: '#search' },
-  { label: 'Cart', href: '#cart' },
-  { label: 'Login', href: '#login' },
-  { label: 'Home', href: '#top' },
-  { label: 'Services', href: '#services' },
-  { label: 'Shop', href: '#shop' },
-]
 
-
+  { label: "search", href: "#search" },
+  { label: "Cart", href: "#cart" },
+  { label: "Login", href: "#login" },
+  { label: "Home", href: "#top" },
+  { label: "Services", href: "#services" },
+  { label: "About Us", href: "#about_us" },
+  { label: "+263-771-254-430", href: "tel:+263771254430" },
+];
 
 const CATEGORY_ITEMS = [
-  { icon: 'ht-computer-support-outline', text: 'Computers & Printers' },
-  { icon: 'ht-wifi-network-outline', text: 'WiFi & Network' },
-  { icon: 'ht-mobile-tablet-outline', text: 'Mobile Devices' },
-  { icon: 'ht-audio-video-outline', text: 'Audio & Video' },
-  { icon: 'ht-tv-mounting-outline', text: 'Cybersecurity' },
-  { icon: 'ht-smart-home-outline', text: 'IT Consulting' },
-  { icon: 'ht-cat-icon-home-security', text: 'Home & Office Security' },
-  { icon: 'ht-home-office-outline', text: 'Around the Office' },
-]
+  { icon: "ht-computer-support-outline", text: "Computers & Printers" },
+  { icon: "ht-wifi-network-outline", text: "WiFi & Network" },
+  { icon: "ht-mobile-tablet-outline", text: "Mobile Devices" },
+  { icon: "ht-audio-video-outline", text: "Audio & Video" },
+  { icon: "ht-tv-mounting-outline", text: "Cybersecurity" },
+  { icon: "ht-smart-home-outline", text: "IT Consulting" },
+  { icon: "ht-cat-icon-home-security", text: "Home & Office Security" },
+  { icon: "ht-home-office-outline", text: "Around the Office" },
+];
 
 const ROTATING_DEVICES = [
-  'Computer',
-  'Network',
-  'Server',
-  'Cloud',
-  'Printer',
-  'Mobile',
-]
-
-
+  "Computer",
+  "Network",
+  "Server",
+  "Cloud",
+  "Printer",
+  "Mobile",
+];
 
 export default function Home() {
-  const [index, setIndex] = useState(0)
+  const [index, setIndex] = useState(0);
+  const [menuOpen, setMenuOpen] = useState(false);
+  
 
   useEffect(() => {
     const t = setInterval(() => {
-      setIndex((i) => (i + 1) % ROTATING_DEVICES.length)
-    }, 1800)
-    return () => clearInterval(t)
-  }, [])
-
-
+      setIndex((i) => (i + 1) % ROTATING_DEVICES.length);
+    }, 1800);
+    return () => clearInterval(t);
+  }, []);
 
   return (
     <div id="top" className="min-h-screen bg-gray-50 text-gray-900">
@@ -75,136 +72,167 @@ export default function Home() {
         <meta property="og:site_name" content={BRAND.name} />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+{/* HEADER */}
+<header className="sticky top-0 z-40 w-full border-b border-gray-200 shadow-[0_6px_8px_rgba(38,55,70,0.03)] bg-white backdrop-blur">
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
 
-      {/* HEADER */}
-        <header className="sticky top-0 z-40 bg-white/80 backdrop-blur border-b">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
-            {/* Left: Brand + Left Menu */}
-            <div className="flex items-center gap-80">
-              <div className="flex items-center gap-2">
-                <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-blue-600 to-indigo-600" />
-                <span className="text-xl font-extrabold tracking-tight text-[#0992E9]" style={{ fontFamily: 'InterTight, sans-serif' }}>
-                  {BRAND.name}
-                </span>
-              </div> {/* <-- Close the inner flex div here */}
-        
-                <nav className="flex items-center gap-8 text-sm">
-                  {MENU.slice(4).map((m) => (
-                    <a key={m.label} href={m.href} className="hover:text-[#0992E9] text-lg">
-                      {m.label}
-                    </a>
-                  ))}
-                </nav>
-
-            </div> {/* <-- Close the flex items-center gap-80 div here */}
-
-
-
-            
-
-            {/* Center: First 3 Menu Items */}
-            <nav className="flex items-center gap-5 text-lg">
-              {MENU.slice(0, 4).map((m) => (
-                <a
-                  key={m.label}
-                  href={m.href}
-                  className="flex items-center hover:text-[#0992E9]"
-                >
-                  {m.label === "search" ? (
-                    <img src="/icons/search.svg" alt="Search" className="w-7 h-7" />
-                  ) : m.label === "Cart" ? (
-                    <img src="/icons/cart.svg" alt="Cart" className="w-7 h-7" />
-                  ) : m.label === "Login" ? (
-                    <img src="/icons/login.svg" alt="Login" className="w-7 h-7" />
-                  ) : (
-                    m.label
-                  )}
-                </a>
-              ))}
-
-
-            </nav>
-
-
-
-          </div>
-        </header>
-
-      {/* HERO */}
-{/* HERO */}
-<section className="relative overflow bg-gradient-to-r from-[#0992E9] to-indigo-700 text-white">
-  <div className="max-w-7xl mx-auto px-4 sm:px-6 py-20 grid md:grid-cols-2 gap-12 items-center">
-    
-    {/* Left: Headline & CTA */}
-    <div className="relative z-10">
-      {/* Headline */}
-      <h1 className="text-4xl md:text-5xl font-bold leading-tight">
-        <span className="whitespace-nowrap">In-Office & Online Support</span> for your{" "}
-        <span className="inline-block align-baseline">
-          <AnimatePresence mode="wait">
-            <motion.span
-              key={index}
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -12 }}
-              transition={{ duration: 0.35 }}
-              className="inline-block"
-            >
-              {ROTATING_DEVICES[index]}
-            </motion.span>
-          </AnimatePresence>
-        </span>
-      </h1>
-      <p className="mt-4 text-lg/7 opacity-90 max-w-xl">
-        The best tech solution, ready to help you — anytime, anywhere. {BRAND.tagline}
-      </p>
-
-      {/* Category dropdown as primary CTA */}
-      <div className="mt-8 w-full md:w-[28rem] relative">
-        <details className="group w-full">
-          <summary className="list-none flex justify-between items-center px-4 py-3 rounded-xl border bg-white text-gray-900 shadow cursor-pointer w-full">
-            <span className="text-4xl md:text-3xl font-bold leading-tight">I need help with…</span>
-            <svg
-              className="w-5 h-5 text-gray-500 transition-transform group-open:rotate-180"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-            >
-              <path d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.24a.75.75 0 01-1.06 0L5.21 8.29a.75.75 0 01.02-1.08z" />
-            </svg>
-          </summary>
-
-          {/* Dropdown Menu */}
-          <div className="absolute top-full left-0 mt-2 w-full rounded-2xl border bg-white text-black shadow-xl p-2 flex flex-col gap-1 z-50">
-            {CATEGORY_ITEMS.map((c) => (
-              <a
-                key={c.text}
-                href="#services"
-                className="flex items-center gap-3 px-3 py-2 rounded-xl hover:bg-blue-100"
-              >
-                <i className={`ht-icon ${c.icon} text-xl`} aria-hidden />
-                <span className="text-sm font-medium">{c.text}</span>
-              </a>
-            ))}
-          </div>
-        </details>
+    {/* Left: Logo + Hamburger */}
+    <div className="flex items-center gap-3">
+      {/* Mobile Hamburger */}
+      <div className="md:hidden">
+        <button
+          onClick={() => setMenuOpen(!menuOpen)}
+          className="p-2 rounded-lg bg-gray-100 hover:bg-gray-200"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-7 w-7 text-gray-700"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            {menuOpen ? (
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            ) : (
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+            )}
+          </svg>
+        </button>
       </div>
+
+      {/* Logo */}
+      <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-blue-600 to-indigo-600" />
+      <span className="text-xl font-extrabold tracking-tight text-blue-600" style={{ fontFamily: "InterTight, sans-serif" }}>
+        {BRAND.name}
+      </span>
     </div>
 
-    {/* Right: Hero Image (call.png) fills entire box */}
-    <div className="relative h-[420px] md:h-[460px] w-full rounded-3xl overflow-hidden">
-      <img
-        src="/herro.png"
-        alt="Call"
-        className="absolute inset-0 w-full h-full object-cover"
-      />
-      {/* Optional gradient overlay for style */}
-      <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-white/5 " />
+    {/* Desktop Menu (hidden on mobile) */}
+    <nav className=" items-center gap-6 text-base font-medium">
+      {MENU.filter(m => !["search", "Cart", "Login", "+263-771-254-430"].includes(m.label)).map((m) => (
+        <a
+          key={m.label}
+          href={m.href}
+          className="relative px-2 py-1 transition hover:text-[#0992E9] 
+                     after:absolute after:left-0 after:bottom-0 after:w-0 after:h-[2px] 
+                     after:bg-[#0992E9] after:transition-all hover:after:w-full"
+        >
+          {m.label}
+        </a>
+      ))}
+      
+    </nav>
+
+    {/* Mobile Contact (visible only on mobile) */}
+    <div className="">
+      <a
+        href={MENU.find(m => m.label.includes("+"))?.href}
+        className="ml-2 px-4 py-2 rounded-lg bg-[#0992E9] text-white font-semibold shadow-md hover:bg-blue-800 transition"
+      >
+        {MENU.find(m => m.label.includes("+"))?.label}
+      </a>
     </div>
+
   </div>
 
-  {/* Blur effect below hero */}
-  <div className="absolute -bottom-16 inset-x-0 h-40 bg-white/10 blur-2xl" />
-</section>
+  {/* Mobile Dropdown */}
+  <AnimatePresence>
+    {menuOpen && (
+      <motion.nav
+        initial={{ opacity: 0, y: -10 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: -10 }}
+        className="md:hidden bg-white border-t shadow-lg flex flex-col p-4 gap-4"
+      >
+        {MENU.filter(m => ["Home", "Services", "About Us"].includes(m.label)).map((m) => (
+          <a
+            key={m.label}
+            href={m.href}
+            className="text-gray-700 hover:text-[#0992E9] text-lg"
+            onClick={() => setMenuOpen(false)}
+          >
+            {m.label}
+          </a>
+        ))}
+      </motion.nav>
+    )}
+  </AnimatePresence>
+</header>
+
+
+      {/* HERO */}
+      <section className="relative bg-gradient-to-r from-[#0992E9] to-indigo-700 text-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-20 grid md:grid-cols-2 gap-12 items-center">
+          {/* Left */}
+          <div>
+            <h1 className="text-3xl md:text-5xl font-bold leading-tight">
+              In-Office & Online Support for your{" "}
+              <span className="inline-block">
+                <AnimatePresence mode="wait">
+                  <motion.span
+                    key={index}
+                    initial={{ opacity: 0, y: 12 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -12 }}
+                    transition={{ duration: 0.35 }}
+                  >
+                    {ROTATING_DEVICES[index]}
+                  </motion.span>
+                </AnimatePresence>
+              </span>
+            </h1>
+            <p className="mt-4 text-lg opacity-90 max-w-xl">
+              The best tech solution, ready to help you — anytime, anywhere.{" "}
+              {BRAND.tagline}
+            </p>
+
+            {/* Dropdown */}
+            <div className="mt-8 w-full md:w-[28rem] relative">
+              <details className="group w-full">
+                <summary className="flex justify-between items-center px-4 py-3 rounded-xl border bg-white text-gray-900 shadow cursor-pointer">
+                  <span className="text-xl md:text-2xl font-bold">
+                    I need help with…
+                  </span>
+                  <svg
+                    className="w-5 h-5 text-gray-500 transition-transform group-open:rotate-180"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                  >
+                    <path d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.24a.75.75 0 01-1.06 0L5.21 8.29a.75.75 0 01.02-1.08z" />
+                  </svg>
+                </summary>
+                <div className="absolute top-full left-0 mt-2 w-full rounded-2xl border bg-white text-black shadow-xl p-2 flex flex-col gap-1 z-50">
+                  {CATEGORY_ITEMS.map((c) => (
+                    <a
+                      key={c.text}
+                      href="#contact"
+                      className="flex items-center gap-3 px-3 py-2 rounded-xl hover:bg-blue-100"
+                    >
+                      {c.icon && <c.icon className="w-5 h-5 text-blue-600" />}
+
+                      <span className="text-sm font-medium">{c.text}</span>
+                    </a>
+                  ))}
+                </div>
+              </details>
+            </div>
+          </div>
+
+          {/* Right */}
+          <div className="relative h-72 md:h-[460px] w-full rounded-3xl overflow-hidden">
+            <img
+              src="/herro.png"
+              alt="Call"
+              className="absolute inset-0 w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-white/5" />
+          </div>
+        </div>
+
+      </section>
+
+ 
+
 
 
 
@@ -217,18 +245,28 @@ export default function Home() {
     </div>
 
     {/* Book a Service Button */}
-    <button className="px-5 py-2 bg-white text-[#0992E9] font-semibold  hover:bg-gray-100 transition ">
-      Book A Service
-    </button>
+              <div className="flex-shrink-0">
+                <a
+                  href="#contact"
+                  className="px-5 py-4 bg-white text-[#0992E9] font-semibold  hover:bg-gray-100 transition"
+                >
+                  Book A Service Now
+                </a>
+              </div>
   </div>
 </div>
+
+
+
+
+
 
 
 
       {/* SERVICES SLIDER */}
       <section id="services" className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 text-center relative">
-          <h2 className="text-3xl font-bold">Popular CyberOPS Services</h2>
+          <h2 className="text-3xl font-bold">Popular Services</h2>
           <p className="mt-2 text-gray-600 max-w-2xl mx-auto">
             Enterprise-grade solutions for small businesses to large organizations.
           </p>
@@ -450,52 +488,67 @@ export default function Home() {
 </section>
 
 
-{/* --- WHY US & PARTNERS SECTION --- */}
-<section id="whyus-partners" className="py-20 bg-gray-100">
-  <div className="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col justify-between h-full min-h-[400px]">
-
-    {/* --- Why CyberOPS --- */}
+{/* --- WHY CHOOSE US SECTION (2 Columns) --- */}
+<section id="about_us" className="py-16 bg-gray-100">
+  <div className="max-w-6xl mx-auto px-4 sm:px-6">
     <div className="text-center mb-12">
-      <h2 className="text-3xl font-bold mb-6">Why {BRAND.name}?</h2>
-      <ul className="space-y-3 text-gray-700 max-w-xl mx-auto">
-        <li>• Certified experts in cybersecurity, cloud, and networking</li>
-        <li>• Same-day remote support and rapid on-site dispatch</li>
-        <li>• Clear, fixed pricing and documented remediation</li>
-        <li>• Enterprise practices, small-business friendliness</li>
-      </ul>
+      <h2 className="text-3xl sm:text-4xl font-bold">Why Choose CyberOPS?</h2>
+      <p className="mt-4 text-gray-600 max-w-2xl mx-auto">
+        Delivering fast, secure, and reliable IT solutions tailored to your business needs.
+      </p>
     </div>
 
-        {/* MEMBERSHIP PROMO CARD */}
-          <div className="py-5 max-w-4xl mx-auto px-4 sm:px-9">
-            <div className="flex items-center justify-between bg-white shadow-md hover:shadow-lg transition p-7 gap-7">
+    {/* 2-Column Grid */}
+    <div className="grid grid-cols-3 sm:grid-cols-4 gap-8">
+      <div className="flex items-start gap-4">
+        <div className="text-blue-700 text-3xl">💻</div>
+        <p className="font-medium text-gray-700">
+          Certified experts in cybersecurity, cloud, and networking.
+        </p>
+      </div>
 
-              {/* Icon */}
-              <div className="flex-shrink-0">
-                <img src="/icons/login.svg" alt="Membership Icon" className="w-10 h-10" />
-              </div>
+      <div className="flex items-start gap-4">
+        <div className="text-blue-700 text-3xl">⚡</div>
+        <p className="font-medium text-gray-700">
+          Rapid remote support or same-day on-site assistance.
+        </p>
+      </div>
 
-              {/* Text */}
-              <div className="flex-1 text-left">
-                <p className="text-lg font-bold text-blue-700">
-                  Say no to IT and techical headaches and get a Technician!
-                </p>
-              </div>
+      <div className="flex items-start gap-4">
+        <div className="text-blue-700 text-3xl">🔒</div>
+        <p className="font-medium text-gray-700">
+          End-to-end cybersecurity & risk management.
+        </p>
+      </div>
 
-              {/* Join Button */}
-              <div className="flex-shrink-0">
-                <a
-                  href="#join"
-                  className="px-5 py-5 rounded-xl bg-blue-700 text-white font-semibold shadow hover:bg-blue-800 transition"
-                >
-                  Book A Service Now
-                </a>
-              </div>
+      <div className="flex items-start gap-4">
+        <div className="text-blue-700 text-3xl">🌐</div>
+        <p className="font-medium text-gray-700">
+          Wi-Fi, network setup, and computer repair services.
+        </p>
+      </div>
 
-            </div>
-          </div>
+      <div className="flex items-start gap-4">
+        <div className="text-blue-700 text-3xl">💡</div>
+        <p className="font-medium text-gray-700">
+          IT consulting and professional tech advice.
+        </p>
+      </div>
 
+      <div className="flex items-start gap-4">
+        <div className="text-blue-700 text-3xl">📈</div>
+        <p className="font-medium text-gray-700">
+          Fixed pricing with clear, documented solutions.
+        </p>
+      </div>
+    </div>
   </div>
 </section>
+
+
+
+
+
    {/* --- Partners Logos at bottom --- */}
     <div className="flex justify-center items-center gap-8 overflow-x-auto px-4 py-2 mt-auto scrollbar-hide">
       {[
@@ -612,9 +665,10 @@ export default function Home() {
 /*
   Notes:
   - This page mirrors the structure you shared: header with dropdown, hero with rotating device name,
-    category menu, banner, service grid, reviews, about, contact, and footer — branded for CyberOPS.
+    category menu, banner, service grid, reviews, about, contact, and footer — branded for Established Solutions.
   - Styling uses Tailwind utility classes. In a real Next.js app, ensure Tailwind is set up
     (tailwind.config.js + globals.css). If you prefer CSS Modules instead, we can convert.
   - Replace placeholder icon classes (ht-icon …) with your icon set or SVGs.
   - Replace hero/art blocks with real images under /public.
 */
+
