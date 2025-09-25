@@ -3,6 +3,7 @@
 import Head from "next/head";
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 
 
 // --- Config ---
@@ -208,7 +209,7 @@ export default function Home() {
                       href="#contact"
                       className="flex items-center gap-3 px-3 py-2 rounded-xl hover:bg-blue-100"
                     >
-                      {c.icon && <c.icon className="w-5 h-5 text-blue-600" />}
+                      {c.icon && <i className={`${c.icon} w-5 h-5 text-blue-600`} />}
 
                       <span className="text-sm font-medium">{c.text}</span>
                     </a>
@@ -220,11 +221,13 @@ export default function Home() {
 
           {/* Right */}
           <div className="relative h-72 md:h-[460px] w-full rounded-3xl overflow-hidden">
-            <img
-              src="/herro.png"
-              alt="Call"
-              className="absolute inset-0 w-full h-full object-cover"
-            />
+<Image
+  src="/herro.png"
+  alt="Call"
+  className="absolute inset-0 object-cover"
+  fill
+  priority
+/>
             <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-white/5" />
           </div>
         </div>
@@ -289,7 +292,13 @@ export default function Home() {
                   key={s.title}
                   className="flex-shrink-0 snap-center flex flex-col items-center p-2 rounded-2xl bg-white hover:shadow-lg transition w-70"
                 >
-                  <img src={s.img} alt={s.title} className="w-50 h-50 object-contain mb-0" />
+      <Image
+        src={s.img}
+        alt={s.title}
+        width={120}
+        height={120}
+        className="object-contain mb-0"
+      />
                   <h3 className="text-lg font-semibold text-blue-700">{s.title}</h3>
                   <a
                     href="#contact"
@@ -559,7 +568,7 @@ export default function Home() {
         { name: "Trendnet", img: "/hikivision.png" },
       ].map((b) => (
         <div key={b.name} className="flex flex-col items-center justify-center w-28 flex-shrink-0">
-          <img src={b.img} alt={b.name} className="w-20 h-20 object-contain mb-2" />
+          <Image src={b.img} alt={b.name} className="w-20 h-20 object-contain mb-2" />
         </div>
       ))}
     </div>
