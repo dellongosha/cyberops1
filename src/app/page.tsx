@@ -83,6 +83,8 @@ export default function Home() {
       <div className="md:hidden">
         <button
           onClick={() => setMenuOpen(!menuOpen)}
+          aria-expanded={menuOpen}
+          aria-label="Toggle menu"
           className="p-2 rounded-lg bg-gray-100 hover:bg-gray-200"
         >
           <svg
@@ -108,31 +110,40 @@ export default function Home() {
       </span>
     </div>
 
-    {/* Desktop Menu (hidden on mobile) */}
-    <nav className=" items-center gap-6 text-base font-medium">
+    {/* Desktop Menu */}
+    <nav className="hidden md:flex items-center gap-6 text-base font-medium">
       {MENU.filter(m => !["search", "Cart", "Login", "+263-771-254-430"].includes(m.label)).map((m) => (
         <a
           key={m.label}
           href={m.href}
           className="relative px-2 py-1 transition hover:text-[#0992E9] 
                      after:absolute after:left-0 after:bottom-0 after:w-0 after:h-[2px] 
-                     after:bg-[#0992E9] after:transition-all hover:after:w-full"
+                     after:bg-[#0992E9] after:transition-all hover:after:w-full text-gray-700 font-interTight"
         >
           {m.label}
         </a>
       ))}
-      
     </nav>
 
-    {/* Mobile Contact (visible only on mobile) */}
-    <div className="">
+    {/* Desktop Actions */}
+    <div className="hidden md:flex items-center gap-4">
       <a
-        href={MENU.find(m => m.label.includes("+"))?.href}
-        className="ml-2 px-4 py-2 rounded-lg bg-[#0992E9] text-white font-semibold shadow-md hover:bg-blue-800 transition"
+        href="tel:+263771254430"
+        className="px-4 py-2 rounded-lg bg-[#0992E9] text-white font-semibold shadow-md hover:bg-blue-800 transition"
       >
-        {MENU.find(m => m.label.includes("+"))?.label}
+        CALL +263 771 254 430
       </a>
     </div>
+
+    {/* Mobile Contact (visible only on mobile) */}
+<div className="md:hidden ml-2">
+  <a
+    href={MENU.find(m => m.label.includes("+"))?.href}
+    className="text-[#057ac3] font-semibold text-base whitespace-nowrap"
+  >
+    {MENU.find(m => m.label.includes("+"))?.label}
+  </a>
+</div>
 
   </div>
 
@@ -143,13 +154,14 @@ export default function Home() {
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: -10 }}
+        transition={{ duration: 0.2, type: "spring", stiffness: 200 }}
         className="md:hidden bg-white border-t shadow-lg flex flex-col p-4 gap-4"
       >
         {MENU.filter(m => ["Home", "Services", "About Us"].includes(m.label)).map((m) => (
           <a
             key={m.label}
             href={m.href}
-            className="text-gray-700 hover:text-[#0992E9] text-lg"
+            className="text-gray-700 hover:text-[#0992E9] text-lg font-interTight"
             onClick={() => setMenuOpen(false)}
           >
             {m.label}
@@ -159,6 +171,7 @@ export default function Home() {
     )}
   </AnimatePresence>
 </header>
+
 
 
       {/* HERO */}
@@ -288,15 +301,19 @@ export default function Home() {
                 { title: "Remote Support", img: "/remote.png" },
               ].map((s) => (
 
-                <div
-                  key={s.title}
-                  className="flex-shrink-0 snap-center flex flex-col items-center p-2 rounded-2xl bg-white hover:shadow-lg transition w-70"
-                >
+<div
+  key={s.title}
+  className="flex-shrink-0 snap-center flex flex-col items-center 
+             p-4 rounded-2xl bg-white hover:shadow-lg transition
+             w-64 h-64"   // 👈 fixed width & height
+>
+
+
       <Image
         src={s.img}
         alt={s.title}
-        width={120}
-        height={120}
+        width={180}
+        height={180}
         className="object-contain mb-0"
       />
                   <h3 className="text-lg font-semibold text-blue-700">{s.title}</h3>
@@ -496,10 +513,9 @@ export default function Home() {
   </div>
 </section>
 
-
-{/* --- WHY CHOOSE US SECTION (2 Columns) --- */}
+{/* --- WHY CHOOSE US SECTION (Responsive) --- */}
 <section id="about_us" className="py-16 bg-gray-100">
-  <div className="max-w-6xl mx-auto px-4 sm:px-6">
+  <div className="mx-auto px-4 sm:px-6">
     <div className="text-center mb-12">
       <h2 className="text-3xl sm:text-4xl font-bold">Why Choose CyberOPS?</h2>
       <p className="mt-4 text-gray-600 max-w-2xl mx-auto">
@@ -507,8 +523,9 @@ export default function Home() {
       </p>
     </div>
 
-    {/* 2-Column Grid */}
-    <div className="grid grid-cols-3 sm:grid-cols-4 gap-8">
+    {/* Responsive Grid */}
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+
       <div className="flex items-start gap-4">
         <div className="text-blue-700 text-3xl">💻</div>
         <p className="font-medium text-gray-700">
@@ -558,6 +575,7 @@ export default function Home() {
 
 
 
+
    {/* --- Partners Logos at bottom --- */}
     <div className="flex justify-center items-center gap-8 overflow-x-auto px-4 py-2 mt-auto scrollbar-hide">
       {[
@@ -568,7 +586,15 @@ export default function Home() {
         { name: "Trendnet", img: "/hikivision.png" },
       ].map((b) => (
         <div key={b.name} className="flex flex-col items-center justify-center w-28 flex-shrink-0">
-          <Image src={b.img} alt={b.name} className="w-20 h-20 object-contain mb-2" />
+<div className="relative w-20 h-20 mb-2">
+  <Image 
+    src={b.img} 
+    alt={b.name} 
+    fill 
+    className="object-contain"
+  />
+</div>
+
         </div>
       ))}
     </div>
@@ -667,6 +693,8 @@ export default function Home() {
           </nav>
         </div>
       </footer>
+
+
     </div>
   )
 }
