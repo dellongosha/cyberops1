@@ -374,48 +374,52 @@ export default function Home() {
 
         </div>
       </section>
-
 {/* INTERNET SPEED TEST SECTION */}
 <section id="speedtest" className="py-20 bg-gray-100">
-  <div className="max-w-7xl mx-auto px-4 sm:px-6 grid md:grid-cols-2 gap-12 items-center">
-    
-    {/* Left: Speed test iframe */}
-    <div className="w-full h-[400px] md:h-[450px]">
-      <iframe
-        id="fast-iframe"
-        src="https://fast.com"
-        width="100%"
-        height="100%"
-        frameBorder="0"
-        className="rounded-2xl"
-        title="Internet Speed Test"
-      ></iframe>
-    </div>
-
-    {/* Right: Text & button */}
-    <div className="flex flex-col justify-center gap-6">
-      <h2 className="text-3xl font-bold text-gray-900">Getting the speed you need?</h2>
-      <p className="text-gray-600 text-lg">
-        A fast connection is essential whether you’re working, playing, or relaxing. 
-        Use our speed test to make sure your network is giving you what you need.
-      </p>
+  <div className="max-w-7xl mx-auto px-4 sm:px-6">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
       
-      <button
-        onClick={() => {
-          const iframe = document.getElementById('fast-iframe') as HTMLIFrameElement;
-          if (iframe) iframe.src = iframe.src; // Reload iframe to "run test"
-        }}
-        className=" w-1/3 px-6 py-4 bg-blue-700 text-white font-semibold shadow hover:bg-blue-800 transition"
-      >
-        Run Speed Test
-      </button>
-      <p className="text-gray-500 text-sm">
-        Free, instant, and easy to use. Works on any device.
-      </p>
-    </div>
+      {/* Left: Text & button */}
+      <div className="flex flex-col justify-center gap-6">
+        <h2 className="text-3xl font-bold text-gray-900">
+          Getting the speed you need?
+        </h2>
+        <p className="text-gray-600 text-lg">
+          A fast connection is essential whether you’re working, playing, or relaxing. 
+          Use our speed test to make sure your network is giving you what you need.
+        </p>
 
+        <p className="text-gray-500 text-sm">
+          Free, instant, and easy to use. Works on any device.
+        </p>
+
+        <button
+          onClick={() => {
+            const iframe = document.getElementById('fast-iframe') as HTMLIFrameElement;
+            if (iframe) iframe.src = iframe.src; // Reload iframe to "run test"
+          }}
+          className="px-6 py-4 bg-blue-700 text-white font-semibold rounded-lg shadow hover:bg-blue-800 transition w-full md:w-auto"
+        >
+          Run Speed Test
+        </button>
+      </div>
+
+      {/* Right: Speed test iframe */}
+      <div className="w-full h-[400px] md:h-[450px]">
+        <iframe
+          id="fast-iframe"
+          src="https://fast.com"
+          width="100%"
+          height="100%"
+          frameBorder="0"
+          className="rounded-2xl"
+          title="Internet Speed Test"
+        ></iframe>
+      </div>
+    </div>
   </div>
 </section>
+
 
 {/* COMMON PROBLEMS SLIDER */}
 <section id="common-problems" className="py-5 bg-gray-50">
@@ -517,7 +521,7 @@ export default function Home() {
 <section id="about_us" className="py-16 bg-gray-100">
   <div className="mx-auto px-4 sm:px-6">
     <div className="text-center mb-12">
-      <h2 className="text-3xl sm:text-4xl font-bold">Why Choose CyberOPS?</h2>
+      <h2 className="text-3xl sm:text-4xl font-bold">Why Choose Established Solutions?</h2>
       <p className="mt-4 text-gray-600 max-w-2xl mx-auto">
         Delivering fast, secure, and reliable IT solutions tailored to your business needs.
       </p>
@@ -577,8 +581,9 @@ export default function Home() {
 
 
    {/* --- Partners Logos at bottom --- */}
-    <div className="flex justify-center items-center gap-8 overflow-x-auto px-4 py-2 mt-auto scrollbar-hide">
+    <div className="flex justify-center items-center gap-4 overflow-x-auto px-4 py-2 mt-auto scrollbar-hide">
       {[
+        { name: "Liquid", img: "/liquid.png" },
         { name: "Microsoft", img: "/microsoft.png" },
         { name: "Lenovo", img: "/lenovo.png" },
         { name: "HP", img: "/hp.png" },
@@ -634,7 +639,7 @@ export default function Home() {
         </a>
 
         <a
-          href="mailto:info@cyberops.co.zw"
+          href="mailto:info@established.co.zw"
           className="flex-1 px-6 py-3 bg-gray-800 text-white font-semibold rounded-xl shadow-lg hover:bg-gray-900 transition text-center"
         >
           Email Us

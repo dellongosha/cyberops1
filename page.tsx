@@ -561,6 +561,7 @@ export default function Home() {
    {/* --- Partners Logos at bottom --- */}
     <div className="flex justify-center items-center gap-8 overflow-x-auto px-4 py-2 mt-auto scrollbar-hide">
       {[
+        { name: "Liquid", img: "/liquidS.png" },
         { name: "Microsoft", img: "/microsoft.png" },
         { name: "Lenovo", img: "/lenovo.png" },
         { name: "HP", img: "/hp.png" },
