@@ -583,12 +583,13 @@ export default function Home() {
    {/* --- Partners Logos at bottom --- */}
     <div className="flex justify-center items-center gap-4 overflow-x-auto px-4 py-2 mt-auto scrollbar-hide">
       {[
+        { name: "Anydesk", img: "/anydesk.png" },
         { name: "Liquid", img: "/liquid.png" },
         { name: "Microsoft", img: "/microsoft.png" },
         { name: "Lenovo", img: "/lenovo.png" },
         { name: "HP", img: "/hp.png" },
         { name: "Dell", img: "/dell.png" },
-        { name: "Trendnet", img: "/hikivision.png" },
+        { name: "Hikvision", img: "/hikivision.png" },
       ].map((b) => (
         <div key={b.name} className="flex flex-col items-center justify-center w-28 flex-shrink-0">
 <div className="relative w-20 h-20 mb-2">
@@ -639,7 +640,7 @@ export default function Home() {
         </a>
 
         <a
-          href="mailto:info@established.co.zw"
+          href="mailto:goshadt1@gmail.com"
           className="flex-1 px-6 py-3 bg-gray-800 text-white font-semibold rounded-xl shadow-lg hover:bg-gray-900 transition text-center"
         >
           Email Us
@@ -695,8 +696,13 @@ export default function Home() {
           <nav className="flex items-center gap-4 text-sm">
             <a href="#" className="hover:text-white">Privacy</a>
             <a href="#" className="hover:text-white">Terms</a>
+            <a href="/remote-support" className="hover:underline">
+  Remote Support
+</a>
+
           </nav>
         </div>
+
       </footer>
 
 

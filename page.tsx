@@ -101,11 +101,27 @@ export default function Home() {
         </button>
       </div>
 
-      {/* Logo */}
-      <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-blue-600 to-indigo-600" />
-      <span className="text-xl font-extrabold tracking-tight text-blue-600" style={{ fontFamily: "InterTight, sans-serif" }}>
-        {BRAND.name}
-      </span>
+
+{/* Logo */}
+<div className="flex items-center space-x-2">
+  <div className="flex items-center justify-center w-9 h-9">
+    <Image
+      src="/logo.png"
+      alt={`${BRAND.name} logo`}
+      width={36}     // same as w-9
+      height={36}    // same as h-9
+      className="object-contain rounded-xl"
+      priority       // ensures logo loads fast
+    />
+  </div>
+  <span
+    className="text-xl font-extrabold tracking-tight text-blue-600"
+    style={{ fontFamily: "InterTight, sans-serif" }}
+  >
+    {BRAND.name}
+  </span>
+</div>
+
     </div>
 
     {/* Desktop Menu (hidden on mobile) */}
