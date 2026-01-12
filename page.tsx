@@ -27,7 +27,7 @@ const MENU: MenuItem[] = [
   { label: "Home", href: "#top" },
   { label: "Services", href: "#services" },
   { label: "About Us", href: "#about_us" },
-  { label: "+263-771-254-430", href: "tel:+263771254430" },
+  { label: "071 587 4747", href: "tel:+263715874747" },
 ];
 
 const CATEGORY_ITEMS = [
@@ -126,7 +126,7 @@ export default function Home() {
 
     {/* Desktop Menu (hidden on mobile) */}
     <nav className=" items-center gap-6 text-base font-medium">
-      {MENU.filter(m => !["search", "Cart", "Login", "+263-771-254-430"].includes(m.label)).map((m) => (
+      {MENU.filter(m => !["search", "Cart", "Login", "071 587 4747"].includes(m.label)).map((m) => (
         <a
           key={m.label}
           href={m.href}
@@ -609,7 +609,7 @@ export default function Home() {
       {/* Direct Contact Buttons */}
       <div className="flex flex-col sm:flex-row gap-4">
         <a
-          href="https://wa.me/263771254430"
+          href="https://wa.me/263715874747"
           target="_blank"
           rel="noopener noreferrer"
           className="flex-1 px-6 py-3 bg-green-500 text-white font-semibold rounded-xl shadow-lg hover:bg-green-600 transition text-center"
@@ -618,7 +618,7 @@ export default function Home() {
         </a>
 
         <a
-          href="tel:+263771254430"
+          href="tel:+263715874747"
           className="flex-1 px-6 py-3 bg-[#0992E9] text-white font-semibold rounded-xl shadow-lg hover:bg-blue-800 transition text-center"
         >
           Call Us
